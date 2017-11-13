@@ -1,5 +1,5 @@
-Radar radar1;
-Borders border1;
+Radar radar1, radar2;
+Background background1;
 
 ArrayList<Borders> borders = new ArrayList();
 Drops[] drops = new Drops[50];
@@ -8,6 +8,8 @@ void setup()
 {
   size(600, 600);
   radar1 = new Radar(width / 10, height / 10, 100, 1);
+  radar2 = new Radar(width - (width / 10), height / 10, 100, 1);
+  background1 = new Background();
   for(int i = 0; i < drops.length; i++)
   {
     //Set the new arrays of type Drop
@@ -17,9 +19,12 @@ void setup()
 
 void draw()
 {
-  background(255);
+  background(133,133,133);
+  background1.initialiseBackground();
   radar1.render(); 
   radar1.update();
+  radar2.render();
+  radar2.update();
   for (int i = 0; i < drops.length; i++)
   {
     drops[i].render();

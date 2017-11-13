@@ -5,10 +5,13 @@ class Background
   
   void initialiseBackground()
   {
-    for (int i = 0; i < width / 10; i++)
+    stroke(255, 0, 0);
+    for (int i = 0; i < width / 6; i++)
     {
-      line(width / 2, height / 2, i * 10, height);
+      line(width / 2, height / 2, i * 6, height);
     }//end for
+    
+    moveBackground();
   }//end initialiseBackground
   
   void moveBackground()
@@ -24,7 +27,7 @@ class Background
     
     while (i < height)
     {
-      //i always same since x, onmly y changes
+      //i always same, y changes
       line(0, i, width, i);
       i = i + int(y);
       
