@@ -2,7 +2,7 @@ Radar radar1, radar2;
 Background background1;
 
 ArrayList<Borders> borders = new ArrayList();
-Drops[] drops = new Drops[50];
+Snow[] snow = new Snow[50];
 
 void setup()
 {
@@ -10,10 +10,10 @@ void setup()
   radar1 = new Radar(width / 10, height / 10, 100, 1);
   radar2 = new Radar(width - (width / 10), height / 10, 100, 1);
   background1 = new Background();
-  for(int i = 0; i < drops.length; i++)
+  for(int i = 0; i < snow.length; i++)
   {
     //Set the new arrays of type Drop
-    drops[i] = new Drops();
+    snow[i] = new Snow();
   }//end for
 }//end setup
 
@@ -25,10 +25,10 @@ void draw()
   radar1.update();
   radar2.render();
   radar2.update();
-  for (int i = 0; i < drops.length; i++)
+  for (int i = 0; i < snow.length; i++)
   {
-    drops[i].render();
-    drops[i].update();
+    snow[i].render();
+    snow[i].update();
   }//end for
  
 }//end draw
