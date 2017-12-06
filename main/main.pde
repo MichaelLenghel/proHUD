@@ -1,7 +1,7 @@
 Radar radar1, radar2;
 Background background1;
 
-ArrayList<Borders> borders = new ArrayList();
+//ArrayList<Borders> borders = new ArrayList();
 Snow[] snow = new Snow[50];
 
 void setup()
