@@ -1,4 +1,4 @@
-public boolean check = true;
+
 
 class Radar
 {
@@ -17,10 +17,7 @@ class Radar
   
   void update()
   {
-    if(check == true)
-    {
       theta += speed;
-    }//end if
   }//end update
   
   void render()
@@ -41,17 +38,3 @@ class Radar
       }//end for
   }//end render
 }//end actualRadar
-
-void mousePressed()
-{
-  if (check == true)
-  {
-    check = false;
-  }//end if
-  
-  else
-  {
-    check = true;
-  }//end else
-  
-}//end mousePressed
