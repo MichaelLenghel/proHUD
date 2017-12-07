@@ -2,14 +2,14 @@ abstract class GameObject
 {
   PVector pos;
   PVector forward;
-  float radius, frequency;
+  float radius, frequency, cx, cy;
   
-  GameObject(float x, float y, float radius, float frequency)
+  GameObject(float cx, float cy, float radius, float frequency)
   {
-    pos = new PVector(x, y);
+    this.cx = cx;
+    this.cy = cy;
     this.radius = radius;
     this.frequency = frequency;
-    forward = new PVector(0, -1);
   }
   
   abstract void render();

@@ -1,12 +1,11 @@
-
-
-class Radar
+class Radar extends GameObject
 {
   float cx, cy, radius, frequency, speed, theta;
   
   
   Radar(float cx, float cy, float radius, float frequency)
   {
+    super(cx, cy, radius, frequency); 
     this.cx = cx;
     this.cy = cy;
     this.radius = radius;
