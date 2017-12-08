@@ -36,6 +36,7 @@ class Pod extends GameObject
    if(mouseY < disLine && location.y + (radius / 2) < disLine)
    {
      stroke(255, 0, 0);
+     noFill();
      line(location.x, disLine, location.x, 0);
      line(0, location.y, width, location.y);
       rect(location.x, location.y, radius, radius);
