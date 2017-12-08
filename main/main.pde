@@ -21,7 +21,7 @@ AudioPlayer flighterSound1, buttonClick, warpSound, windDown, startScreen;
 int napTime, numOfObjDisplayOnPauseScreen;
 //Both snow and star must have the same array size or will encounter problems below!
 Snow[] snow = new Snow[50];
-boolean clicked = true;
+boolean clicked = false;
 float screenBorderX = width / 30;
 float screenBorderY = height / 30;
 boolean warpDrive;
@@ -192,7 +192,7 @@ void changeRadars()
   
 void displayButton()
 {
-  float buttonWidth = width - (width / 3);
+  float buttonWidth = width - (width / 4);
   float buttonHeight = height / 6;
   float borderX = (width / 2) - (buttonWidth / 2);
   float borderY = (height / 3)- (buttonHeight / 2) ;
@@ -212,12 +212,13 @@ void displayButton()
 void mousePressed()
 {
   //All for clicking button
-  float buttonWidth = width - (width / 3);
+  float buttonWidth = width - (width / 4);
   float buttonHeight = height / 6;
   float borderX = width / 2 - buttonWidth / 2;
   float borderY = height / 3 - buttonHeight / 2;
-  float dis = (height * 0.75) - screenBorderY;
+  float disButton = (height * 0.85) - screenBorderY;
   
+  //Allows you to start the game!
   if(clicked == false)
   {
     if (mouseX > borderX && mouseX < borderX + buttonWidth
@@ -233,11 +234,13 @@ void mousePressed()
   
   else
   {
-    //if (mouseX > (width / 2) - (buttonWidth / 2) && mouseX <  (width / 2) + (buttonWidth / 2)
-      //&& mouseY > dis + (buttonWidth / 4) && mouseY < dis + (buttonWidth / 4)
-      //)
+    float warpWidth = width / 4;
+    float warpHeight = height / 12;
+    if (mouseX > (width / 2) - (warpWidth / 2) && mouseX <  (width / 2) + (warpWidth / 2)
+      && mouseY > disButton - (warpHeight / 2) && mouseY < disButton + (warpHeight / 2)
+      )
      
-     // {
+      {
           //Will add a cool warp sound
           if(warpDrive == false)
           {
@@ -261,6 +264,6 @@ void mousePressed()
             doOnce = true;
             //warp
           }   
-     // }//end check where pressed if
+      }//end check where pressed if
   }
 }//end mousePressed

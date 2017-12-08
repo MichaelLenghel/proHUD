@@ -44,7 +44,7 @@ class Radar extends GameObject
     noFill();
     int trailLength = 20;
     float greenIntensity = 255.0f / (float)trailLength;
-    float redIntensity = 255.0f / (float)trailLength;
+    float blueIntensity = 255.0f / (float)trailLength;
     float x, y;
     ellipse(cx, cy, radius, radius);
     
@@ -56,7 +56,7 @@ class Radar extends GameObject
         }
         else
         {
-          stroke (0, 0, redIntensity * i);
+          stroke (0, 0, blueIntensity * i);
         }
         
         x = cx + sin(theta + i * speed) * (radius / 2);
