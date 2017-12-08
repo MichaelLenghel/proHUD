@@ -55,6 +55,8 @@ void setup()
     //Screen is first element in gameObjects2, its vvital that an element is not added before it as it will cause an error where we loop it will display incorrectly
    gameObjects2.add(
     new Screen(screenBorderX, screenBorderY));
+   gameObjects2.add(
+    new Pod(width / 2, height / 2, 40.0f, 5.0f));
    gameObjectRadar.add(
     new Radar(width - width * 1/8, height - (height / 8), height / 6, 1, false));
   gameObjectRadar.add(
