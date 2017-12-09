@@ -30,7 +30,8 @@ class Front implements UI
     //Button to go into warp drive
     rectMode(CENTER);
     rect(width / 2, disButton,buttonWidth, buttonHeight, 75); 
-    textSize(10);
+    float tSize = width / 40;
+    textSize(tSize);
     textAlign(CENTER);
     fill(0, 255, 255);
     if(warpDrive == false)

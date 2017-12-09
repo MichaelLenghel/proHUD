@@ -4,7 +4,7 @@ class Pod extends GameObject
  PVector velocity;
  PVector acceleration;
  float maxSpeed, radius;
- Resources resource;
+ Resources resources;
 
   //Pod()
   //{
@@ -24,7 +24,7 @@ class Pod extends GameObject
   acceleration = new PVector(0, 0);
   this.maxSpeed = maxSpeed;
   this.radius = radius;
-  resource = new Resources(0);
+  resources = new Resources(0);
  }
  
  void update()
@@ -40,8 +40,6 @@ class Pod extends GameObject
    location.add(velocity);
    //Doesn't let it gety over 5
    velocity.limit(maxSpeed);
-   //Call resources
-   
  }//end update
  
  void render()
@@ -53,18 +51,12 @@ class Pod extends GameObject
      noFill();
      line(location.x, disLine, location.x, 0);
      line(0, location.y, width, location.y);
-      rect(location.x, location.y, radius, radius);
-     //for(int xg = 0 ; xg <= 5 ; xg ++)
-     //{
-     //  float pos = map(xg, 0, 2, location.x, width - location.x); 
-      
-     //  line(pos + location.x, border, pos + location.x, height - border);
-     //  line(border, pos + location.y, width - border, pos + location.y);   
-     //}  
+     rect(location.x, location.y, radius, radius);  
    }
-   
-   
- }//end display
+   //Call resources
+   resources.pos(location);
+   resources.render();
+ }//end render
  
  void edges()
  {
