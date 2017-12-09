@@ -6,13 +6,13 @@ AudioPlayer flighterSound1, buttonClick, warpSound, windDown, startScreen;
 ArrayList<GameObject> gameObjectsStart = new ArrayList<GameObject>();
 ArrayList<GameObject> gameObjects2 = new ArrayList<GameObject>();
 ArrayList<Star> starss = new ArrayList<Star>();
-int numStars;
+int numStars, numOfObjDisplayOnPauseScreen;
+boolean clicked = true;
+boolean warpDrive;
 //napTime is used to delay spaceShuttle song from playing for 1 second and allow a transition to occur before space shuttle enters
-int napTime, numOfObjDisplayOnPauseScreen;
 float screenBorderX = width / 30;
 float screenBorderY = height / 30;
-boolean clicked = false;
-boolean warpDrive;
+
 Snow[] snow = new Snow[50];
 Front frontWarpCheck;
 Screen screen;
@@ -36,9 +36,6 @@ void setup()
   //Notes:
   //playerloop(); to play for ever, player.play() to play once, player.rewind() to bring bck to start, player.pause will stop file from playing.
   
-  frontWarpCheck = new Front();
-  screen = new Screen(screenBorderX, screenBorderY);
-  napTime = 1000;
   gameObjectsStart.add(
     new Radar(width / 10, height / 10, 100, 1, false));
   gameObjectsStart.add(
@@ -49,6 +46,8 @@ void setup()
     new Radar(width - width * 1/8, height - (height / 8), height / 6, 1, false));
   gameObjects2.add(
    new Radar(width * 1/8, height - (height / 8), height / 6, 1, false));
+  frontWarpCheck = new Front();
+  screen = new Screen(screenBorderX, screenBorderY);
   //gameObjects2.add(
 
     //We only want to display the two radars on the pause screen
@@ -83,12 +82,9 @@ void draw()
       flighterSound1.rewind();
       flighterSound1.play();
     }
-
-    //Display screen. Must be first element or it will be behind the screen
-    screen.update();
-    screen.render();
     
     //Draw stars centered around width, we do this so when we zoom in to the center and we are not going towards the corners
+    screen.render();
     pushMatrix();
     translate(width / 2, height / 2);
     for(int i = starss.size() - 1 ; i >= 0  ; i --)
@@ -108,6 +104,7 @@ void draw()
     {
       GameObject go2 = gameObjects2.get(i);
       //We will remove the radars and change them to be red and faster during warp drive
+      go2.sayHello();
       changeRadarsRemoveOther();
       go2.update();
       go2.render();
@@ -209,7 +206,7 @@ void mousePressed()
       clicked = true;
       buttonClick.play();
       background(0, 0, 0);
-      delay(napTime);
+      delay(1000);
     }
   }//end original if
   

@@ -4,6 +4,17 @@ class Pod extends GameObject
  PVector velocity;
  PVector acceleration;
  float maxSpeed, radius;
+
+
+  Pod()
+  {
+    super(1, 2, 3, 4);
+  }
+  
+  void sayHello()
+  {
+   println("yoyo"); 
+  }
  
  Pod(float x, float y, float radius, float maxSpeed)
  {

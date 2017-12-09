@@ -13,29 +13,12 @@ abstract class GameObject
     this.frequency = frequency;
   }
   
-  //Must have for Front since it extends gameObject
-  GameObject(float screenBorderX, float screenBorderY)
+  void sayHello()
   {
-    
+   Pod pods = new Pod();
+   pods.sayHello(); 
+   
   }
-  
-  GameObject(float frequency)
-  {
-    this.frequency = frequency;
-  }
-  
-  //Will change speed of radar
-  void changeRadarFrequency(float frequency)
-  {
-    this.frequency = frequency;
-    println(frequency);
-  }
-  
-  GameObject(boolean warp)
-  {
-    
-  }
-  
   abstract void render();
   abstract void update();
 }//end

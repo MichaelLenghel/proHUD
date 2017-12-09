@@ -1,19 +1,11 @@
-class Screen extends GameObject
+class Screen implements UI
 {
   float screenBorderX, screenBorderY;
   
   Screen(float screenBorderX, float screenBorderY)
   {
-    super(screenBorderX, screenBorderY);
-  }
-  void update()
-  {
-    
-  }
-  
-  void sayHello()
-  {
-   println("Hello"); 
+    this.screenBorderX = screenBorderX;
+    this.screenBorderY = screenBorderY;
   }
   
   void render()
