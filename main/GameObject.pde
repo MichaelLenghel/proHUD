@@ -17,8 +17,8 @@ abstract class GameObject
   {
    Pod pods = new Pod();
    pods.sayHello(); 
-   
   }
+  
   abstract void render();
   abstract void update();
 }//end

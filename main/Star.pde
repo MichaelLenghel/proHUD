@@ -7,9 +7,9 @@ class Star
  {
   dis = (height * 0.75) - screenBorderY;
   //map onto the screen
-  this.x = x;// map(x, 0, width, screenBorderX + 10, width - (screenBorderX * 2 - 10));
-  this.y = y;// map(y, 0, height, screenBorderY + 10, dis - 10);
-  this.z = z; //map(width, 0, width, screenBorderX + 10, width - (screenBorderX * 2 - 10)); 
+  this.x = x;
+  this.y = y;
+  this.z = z;
   speed = 10;
   warpPressed = false;
   //Where the window goes up to in Front class
@@ -22,21 +22,11 @@ class Star
  
  void update()
  {
-   //Distance to the bottom of the screen
-  //if (x < screenBorderX + 10 || x > width - (screenBorderX * 2 - 10)|| y <  screenBorderY + 10 || y > dis - 10)
-  //  {
-  //    starss.remove(this);
-  //    x = random(screenBorderX + 10, width - (screenBorderX * 2 - 10));
-  //    y = random(screenBorderY + 10, dis - 10);
-  //  }
     //essentially divides by a value that gets bigger and bigger
     z = z - speed;
    ////make the stars reappear
    if (z < 1)
    {
-    //z = map(width, 0, width, screenBorderX + 10, width - (screenBorderX * 2 - 10));
-   // random(screenBorderX + 10, width - (screenBorderX * 2 - 10));
-    //random(screenBorderY + 10, dis - 10);
     z = width;
     x = random(-width, width);
     y = random(-height, height);
