@@ -1,14 +1,10 @@
-class Front extends GameObject
+class Front implements UI
 {
   boolean warpDrive;
   
-  Front(boolean warpDrive)
+  void warpCheck(boolean warpDrive)
   {
-    super(warpDrive);
-  }
-  void update()
-  {
-    
+   this.warpDrive = warpDrive; 
   }
   
   void render()

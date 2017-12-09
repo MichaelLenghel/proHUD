@@ -1,38 +1,29 @@
 import ddf.minim.*;
-
-
+Minim minim;
+//Instaniate sound files
+AudioPlayer flighterSound1, buttonClick, warpSound, windDown, startScreen;
 //Warnings are entirely to do with an internal problem convering processing.sound library. Does not affect program. Possibly since not .wav files
 ArrayList<GameObject> gameObjectsStart = new ArrayList<GameObject>();
-ArrayList<GameObject> gameObjectRadar = new ArrayList<GameObject>();
 ArrayList<GameObject> gameObjects2 = new ArrayList<GameObject>();
 ArrayList<Star> starss = new ArrayList<Star>();
 int numStars;
-
-Background background1;
-PImage startButton;
-
-/*sound here*/
-//Creates the class
-Minim minim;
-//Instaniate 
-AudioPlayer flighterSound1, buttonClick, warpSound, windDown, startScreen;
-
-//namTime is used to delay spaceShuttle song from playing for 1 second and allow a transition to occur before space shuttle enters
+//napTime is used to delay spaceShuttle song from playing for 1 second and allow a transition to occur before space shuttle enters
 int napTime, numOfObjDisplayOnPauseScreen;
-//Both snow and star must have the same array size or will encounter problems below!
-Snow[] snow = new Snow[50];
-boolean clicked = false;
 float screenBorderX = width / 30;
 float screenBorderY = height / 30;
+boolean clicked = false;
 boolean warpDrive;
+Snow[] snow = new Snow[50];
 Front frontWarpCheck;
+Screen screen;
+Background background1;
+
 
 void setup()
 {
   //fullScreen();
   size(600, 600);
-  // Load the soundfile
-  
+  numStars = 350;
   
   /*Sound stuff here*/
   minim = new Minim(this);
@@ -45,25 +36,20 @@ void setup()
   //Notes:
   //playerloop(); to play for ever, player.play() to play once, player.rewind() to bring bck to start, player.pause will stop file from playing.
   
-  frontWarpCheck = new Front(warpDrive);
+  frontWarpCheck = new Front();
+  screen = new Screen(screenBorderX, screenBorderY);
   napTime = 1000;
   gameObjectsStart.add(
     new Radar(width / 10, height / 10, 100, 1, false));
   gameObjectsStart.add(
     new Radar(width - width / 10, height / 10, 100, 1, false));
-    /**Order is extremely important in the elements before, it dictates what goes over what in draw*/
-    //Screen is first element in gameObjects2, its vvital that an element is not added before it as it will cause an error where we loop it will display incorrectly
-   gameObjects2.add(
-    new Screen(screenBorderX, screenBorderY));
-   gameObjects2.add(
-    new Pod(width / 2, height / 2, 40.0f, 5.0f));
-   gameObjectRadar.add(
-    new Radar(width - width * 1/8, height - (height / 8), height / 6, 1, false));
-  gameObjectRadar.add(
-   new Radar(width * 1/8, height - (height / 8), height / 6, 1, false));
   gameObjects2.add(
-    new Front(warpDrive));
-   //Radar on ship
+    new Pod(width / 2, height / 2, 40.0f, 5.0f));
+  gameObjects2.add(
+    new Radar(width - width * 1/8, height - (height / 8), height / 6, 1, false));
+  gameObjects2.add(
+   new Radar(width * 1/8, height - (height / 8), height / 6, 1, false));
+  //gameObjects2.add(
 
     //We only want to display the two radars on the pause screen
    numOfObjDisplayOnPauseScreen = 2;
@@ -74,8 +60,6 @@ void setup()
     //Set the new arrays of type Drop
     snow[i] = new Snow();
   }//end for
-  
-  numStars = 350;
   for(i = 0; i < numStars; i++)
   {
     starss.add(new Star(random(-width, width), random(-height, height), random(width), screenBorderX, screenBorderY));
@@ -101,9 +85,8 @@ void draw()
     }
 
     //Display screen. Must be first element or it will be behind the screen
-    GameObject go2 = gameObjects2.get(0);
-    go2.update();
-    go2.render();
+    screen.update();
+    screen.render();
     
     //Draw stars centered around width, we do this so when we zoom in to the center and we are not going towards the corners
     pushMatrix();
@@ -113,25 +96,19 @@ void draw()
       Star s = starss.get(i);
       s.update();
       s.render();
-      s.warp(warpDrive);
+      s.warp(warpDrive); 
     }
     popMatrix();
+    //Displays front
+    frontWarpCheck.render();
+    frontWarpCheck.warpCheck(warpDrive);
     
-    //Display front. We only go down to 1 as (0) the first element is the screen and we don't want to display that
-     for(int i = gameObjects2.size() - 1 ; i >= 1  ; i --)
-    {
-      go2 = gameObjects2.get(i);
-      //We will remove the radars and change them to be red and faster during warp drive
-      changeRadars();
-      go2.update();
-      go2.render();
-    }
     //Display Radars
-    for(int i = gameObjectRadar.size() - 1 ; i >= 0  ; i --)
+    for(int i = gameObjects2.size() - 1 ; i >= 0  ; i --)
     {
-      go2 = gameObjectRadar.get(i);
+      GameObject go2 = gameObjects2.get(i);
       //We will remove the radars and change them to be red and faster during warp drive
-      changeRadars();
+      changeRadarsRemoveOther();
       go2.update();
       go2.render();
     } 
@@ -163,7 +140,7 @@ void draw()
 
 //We want to only change radars when warpDrive is called, not every frame.
 boolean doOnce = false;
-void changeRadars()
+void changeRadarsRemoveOther()
 {
   if(doOnce)
   {
@@ -171,21 +148,23 @@ void changeRadars()
     if(warpDrive)
     {
       //clears current radar
-      gameObjectRadar.clear();
+      gameObjects2.clear();
       //adds new radar, but will make it red and much faster
-      gameObjectRadar.add(
+      gameObjects2.add(
         new Radar(width - width * 1/8, height - (height / 8), height / 6, 3, true));//True means we are in warp and do what we would expect
-      gameObjectRadar.add(
+      gameObjects2.add(
         new Radar(width * 1/8, height - (height / 8), height / 6, 3, true));
     }
     
     else
     {
-      gameObjectRadar.clear();
-      gameObjectRadar.add(
+      gameObjects2.clear();
+      gameObjects2.add(
         new Radar(width - width * 1/8, height - (height / 8), height / 6, 1, false));
-      gameObjectRadar.add(
+      gameObjects2.add(
         new Radar(width * 1/8, height - (height / 8), height / 6, 1, false));
+      gameObjects2.add(
+        new Pod(width / 2, height / 2, 40.0f, 5.0f));
     }
     doOnce = false;
   }

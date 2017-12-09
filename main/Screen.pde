@@ -11,6 +11,11 @@ class Screen extends GameObject
     
   }
   
+  void sayHello()
+  {
+   println("Hello"); 
+  }
+  
   void render()
   {
     noStroke();
