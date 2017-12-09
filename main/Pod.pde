@@ -4,16 +4,16 @@ class Pod extends GameObject
  PVector velocity;
  PVector acceleration;
  float maxSpeed, radius;
+ Resources resource;
 
-
-  Pod()
-  {
-    super(1, 2, 3, 4);
-  }
+  //Pod()
+  //{
+  //  super(1, 2, 3, 4);
+  //}
   
-  void sayHello()
+  void overlaps()
   {
-   println("yoyo"); 
+   println("Overlapped"); 
   }
  
  Pod(float x, float y, float radius, float maxSpeed)
@@ -24,12 +24,14 @@ class Pod extends GameObject
   acceleration = new PVector(0, 0);
   this.maxSpeed = maxSpeed;
   this.radius = radius;
+  resource = new Resources(0);
  }
  
  void update()
  {
    PVector mouse = new PVector(mouseX, mouseY);
    mouse.sub(location);
+   //Sets the new length of the vector, shorter than normalizing to 1 and then multiplying
    mouse.setMag(0.5);
    acceleration = mouse;
    //acceleration = PVector.random2D();
@@ -38,11 +40,12 @@ class Pod extends GameObject
    location.add(velocity);
    //Doesn't let it gety over 5
    velocity.limit(maxSpeed);
+   //Call resources
+   
  }//end update
  
  void render()
  {
-   float border = width / 10;
    float disLine = (height * 0.75) - screenBorderY;
    if(mouseY < disLine && location.y + (radius / 2) < disLine)
    {

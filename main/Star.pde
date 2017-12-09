@@ -15,11 +15,6 @@ class Star
   //Where the window goes up to in Front class
  }//end Star
  
- void warp(boolean warpPressed)
- {
-   this.warpPressed = warpPressed;
- }
- 
  void update()
  {
     //essentially divides by a value that gets bigger and bigger
@@ -46,6 +41,7 @@ class Star
    noStroke();
    //Map x and y onto the screen
    ellipse(cx, cy, size, size);
+   //Display the resources
    
    stroke(255);
    line(lineX, lineY, cx, cy);
@@ -64,8 +60,8 @@ class Star
    }
  }
  
- //void applyToRadar(Radar radar)
- //{
- //  radar.frequency += 10;
- //}
+ void warp(boolean warpPressed)
+ {
+   this.warpPressed = warpPressed;
+ }
 }

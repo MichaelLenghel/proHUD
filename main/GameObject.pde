@@ -3,6 +3,7 @@ abstract class GameObject
   PVector pos;
   PVector forward;
   float radius, frequency, cx, cy;
+  int numResources;
   boolean warp;
   
   GameObject(float cx, float cy, float radius, float frequency)
@@ -13,11 +14,16 @@ abstract class GameObject
     this.frequency = frequency;
   }
   
-  void sayHello()
+  GameObject(int numResources)
   {
-   Pod pods = new Pod();
-   pods.sayHello(); 
+   this.numResources = numResources; 
   }
+  
+  //void overlaps()
+  //{
+  // Pod pods = new Pod();
+  // pods.overlaps(); 
+  //}
   
   abstract void render();
   abstract void update();

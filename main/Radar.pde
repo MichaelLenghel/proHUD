@@ -20,23 +20,10 @@ class Radar extends GameObject
       theta += speed;
   }//end update
   
-  //void speed(float frequency)
-  //{
-  //  this.frequency = frequency;
-  //}
-  
   void changeRadarFrequency(float frequency)
   {
     this.frequency = frequency;
   }
-  
-  //void checkWarped()
-  //{
-  //  if(go2 instanceof UI)
-  //  {
-  //    ((UI) go2).applyToRadar(this);
-  //  }
-  //}
   
   void render()
   {

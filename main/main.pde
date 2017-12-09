@@ -102,9 +102,10 @@ void draw()
     //Display Radars
     for(int i = gameObjects2.size() - 1 ; i >= 0  ; i --)
     {
-      GameObject go2 = gameObjects2.get(i);
+      GameObject go2 = gameObjects2.get(i);    
+    
       //We will remove the radars and change them to be red and faster during warp drive
-      go2.sayHello();
+     // go2.overlaps();
       changeRadarsRemoveOther();
       go2.update();
       go2.render();
@@ -141,7 +142,6 @@ void changeRadarsRemoveOther()
 {
   if(doOnce)
   {
-      //will find the elements in the radar class
     if(warpDrive)
     {
       //clears current radar
@@ -150,13 +150,14 @@ void changeRadarsRemoveOther()
       gameObjects2.add(
         new Radar(width - width * 1/8, height - (height / 8), height / 6, 3, true));//True means we are in warp and do what we would expect
       gameObjects2.add(
-        new Radar(width * 1/8, height - (height / 8), height / 6, 3, true));
+       new Radar(width * 1/8, height - (height / 8), height / 6, 3, true));
     }
     
     else
     {
+      //clears current radar
       gameObjects2.clear();
-      gameObjects2.add(
+     gameObjects2.add(
         new Radar(width - width * 1/8, height - (height / 8), height / 6, 1, false));
       gameObjects2.add(
         new Radar(width * 1/8, height - (height / 8), height / 6, 1, false));
