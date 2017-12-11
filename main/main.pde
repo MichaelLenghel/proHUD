@@ -313,7 +313,7 @@ float maxBudget, minBudget;
     
     /**Calculate the maxiumum and minimum budgets*/
     maxBudget = 0;
-    minBudget = 0;
+    minBudget = budget.amount;
     for (Budget b:data)
     {
       if (budget.amount < minBudget)
