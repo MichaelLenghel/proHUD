@@ -10,8 +10,6 @@ I am most proud of the pod class which uses vectors to to track the scanner. Thi
 
 
 Youtube video demo of my assignment: 
-https://www.youtube.com/watch?v=dBIdiyLw9r8&feature=youtu.be
-
 <a href="https://www.youtube.com/watch?v=dBIdiyLw9r8&feature=youtu.be
 " target="_blank"><img src="http://i3.ytimg.com/vi/dBIdiyLw9r8/maxresdefault.jpg" 
 alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
