@@ -14,11 +14,6 @@ abstract class GameObject
     this.frequency = frequency;
   }
   
-  GameObject(int numResources)
-  {
-   this.numResources = numResources; 
-  }
-  
   abstract void render();
   abstract void update();
 }//end
