@@ -26,8 +26,8 @@ pieChart chart;
 
 void setup()
 {
-  //fullScreen();
-  size(600, 600);
+  fullScreen();
+  //size(600, 600);
   frameRate (60);
   numStars = 500;
   max = 0;

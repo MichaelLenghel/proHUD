@@ -23,18 +23,18 @@ class Screen implements UI
     float barLineY = 0;
     rectMode(CORNER);
      //Below window
-    rect(0,  height * 3 / 4, width, height / 2);
+    //rect(0,  height * 3 / 4, width, height / 2);
     dis = (height * 0.75) - screenBorderY;
       
     
     //Window
     fill(0);
-    rect(screenBorderX,  screenBorderY, width - (screenBorderX * 2), dis , 75);
+    rect(0,  0, width, dis);
    //Make background blue when we go into warpDrive
    if(warpDrive)
    {
         fill(0, 0, 194);
-        rect(screenBorderX,  screenBorderY, width - (screenBorderX * 2), dis , 75);
+        rect(0,  0, width, dis);
    }//end if
 
     stroke(255, 255, 255);
