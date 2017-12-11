@@ -22,8 +22,6 @@ class Front implements UI
     triangle(width, height * 0.1, width, 0, 0.9 * width, 0);
     rect(0, 0, width, height * 0.05);
     //Side panels
-    //rect(0, 0, width, disLine);
-    //rect(width * 0.09, 0, width * 0.01, disLine);
     
     rect(0,  height * 3 / 4, width, height / 2, 200, 200, 0, 0);
     
@@ -36,8 +34,7 @@ class Front implements UI
     float buttonWidth = width / 4;
     float buttonHeight = height / 12;
     
-    
-    fill(211,211,211);
+    fill(45, 73, 122);
     //Button to go into warp drive
     rectMode(CENTER);
     rect(width / 2, disButton,buttonWidth, buttonHeight, 75); 

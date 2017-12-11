@@ -7,7 +7,7 @@ ArrayList<GameObject> gameObjectsStart = new ArrayList<GameObject>();
 ArrayList<GameObject> gameObjects2 = new ArrayList<GameObject>();
 ArrayList<Star> starss = new ArrayList<Star>();
 int numStars, numOfObjDisplayOnPauseScreen;
-boolean clicked = false;
+boolean clicked = true;
 boolean warpDrive;
 boolean cycleChart = true;
 //napTime is used to delay spaceShuttle song from playing for 1 second and allow a transition to occur before space shuttle enters
