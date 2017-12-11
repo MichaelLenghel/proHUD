@@ -49,7 +49,6 @@ class Star
    float cx = map(x / z, 0, 1, 0, width);
    float cy = map(y / z, 0, 1, 0, height);
    size = map(z, 0, width, 10, 0);
-
    locationStar = new PVector(x, y);
    //Map x and y onto the screen
    ellipse(cx, cy, size, size);

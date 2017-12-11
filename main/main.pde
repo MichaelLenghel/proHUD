@@ -233,9 +233,9 @@ void mousePressed()
   float borderX = width / 2 - buttonWidth / 2;
   float borderY = height / 3 - buttonHeight / 2;
   float disButton = (height * 0.85) - screenBorderY;
-  disLine = (height * 0.75) - screenBorderY;
   float diameter = (height - disLine ) / 1.5;
   float radius = diameter / 2;
+  disLine = (height * 0.75) - screenBorderY;
 
   //Allows you to start the game!
   if(clicked == false)

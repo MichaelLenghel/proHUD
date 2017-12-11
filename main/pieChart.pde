@@ -80,8 +80,6 @@ class pieChart
         text("Mega star", x, y);
       }
       
-      
-      
       stroke(0, col, col);
       fill(0, col, col);
       float size = height - disLine;

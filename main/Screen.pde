@@ -31,8 +31,8 @@ class Screen implements UI
    //Make background blue when we go into warpDrive
    if(warpDrive)
    {
-        fill(0, 0, 194);
-        rect(0,  0, width, dis);
+      fill(0, 0, 194);
+      rect(0,  0, width, dis);
    }//end if
   }
 }

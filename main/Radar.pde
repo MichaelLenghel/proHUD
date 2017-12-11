@@ -20,11 +20,6 @@ class Radar extends GameObject
       theta += speed;
   }//end update
   
-  //void changeRadarFrequency(float frequency)
-  //{
-  //  this.frequency = frequency;
-  //}
-  
   void render()
   {
     stroke(0, 255, 0);
