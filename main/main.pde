@@ -259,7 +259,7 @@ void mousePressed()
     if (mouseX > (width / 2) - (warpWidth / 2) && mouseX <  (width / 2) + (warpWidth / 2)
       && mouseY > disButton - (warpHeight / 2) && mouseY < disButton + (warpHeight / 2)
       )
-       //
+       //music associated with starting the warp drive
       {
           //Will add a cool warp sound
           if(warpDrive == false)
@@ -279,6 +279,7 @@ void mousePressed()
           {
             windDown.play(); 
             warpSound.pause();
+            //With the minim library you need to restart the music
             warpSound.rewind();
             warpDrive = false;
             doOnce = true;
@@ -286,7 +287,7 @@ void mousePressed()
           }   
       }//end check where pressed if
       
-    //Check if pie chart is clicked
+    //Check if pie chart is clicked by checking if distance between mouse and circle is less than radius
     if (dist(chartCenterX, chartCenterY, mouseX, mouseY) < radius)
     {
       if(cycleChart == true)
