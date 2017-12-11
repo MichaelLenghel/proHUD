@@ -1,6 +1,6 @@
 class Budget
 {
-   String country;
+    String country;
     String currency;
     int year;
     float amount;

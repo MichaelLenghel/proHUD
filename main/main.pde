@@ -64,7 +64,7 @@ void setup()
   screen = new Screen(screenBorderX, screenBorderY);
   pod = new Pod(width / 2, height / 2, 40.0f, 5.0f);
   chart = new pieChart(chartCenterX, chartCenterY, height / 6, 1);
-
+  loadData();
   //We only want to display the two radars on the pause screen
   numOfObjDisplayOnPauseScreen = 2;
   int i;
@@ -302,12 +302,12 @@ void mousePressed()
 
  void loadData()
 {
-  data.clear();
   Table t = loadTable("gdp.csv");
   for(int i = 0 ; i < t.getRowCount(); i ++)
   {
     TableRow row = t.getRow(i);
     Budget budget = new Budget(row);
     data.add(budget);
+    println("list");
   }
 }
