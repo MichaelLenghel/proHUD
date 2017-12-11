@@ -7,8 +7,8 @@ class Meters extends GameObject
   {
     super(cx, cy, radius, frequency);
     //Will give us the corner
-    barBorderX = cx - radius;
-    barBorderY = cy - radius;
+    barBorderX = cx;
+    barBorderY = cy;
     this.frequency = frequency;
     this.name = name;
     this.warpDrive = warpDrive;
@@ -20,12 +20,12 @@ class Meters extends GameObject
     float barHeight = height / 5;
     float barLineX = barBorderX + barWidth;
     float barLineY = 0;
-
+    
+    fill(255, 255, 255);
     stroke(255, 255, 255);
     //Temp meter
     rect(barBorderX, barBorderY, barWidth, barHeight);
 
-    
     //for(int i = 0; i < 7; i ++)
     //{
     //  barLineY = map(i, 0, 6, barBorderY, barBorderY + barHeight);
