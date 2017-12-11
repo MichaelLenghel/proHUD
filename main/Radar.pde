@@ -28,7 +28,7 @@ class Radar extends GameObject
   void render()
   {
     stroke(0, 255, 0);
-    noFill();
+    fill(0, 0, 0);
     int trailLength = 10;
     float greenIntensity = 255.0f / (float)trailLength;
     float blueIntensity = 255.0f / (float)trailLength;
@@ -44,7 +44,7 @@ class Radar extends GameObject
         }
         else
         {
-          trailLength = 20;
+          trailLength = 28;
           stroke (0, 0, blueIntensity * i);
         }
         
