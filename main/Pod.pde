@@ -26,7 +26,7 @@ class Pod
   location = new PVector(x, y);
   velocity = new PVector(0, 0);
   acceleration = new PVector(0, 0);
-  this.maxSpeed = maxSpeed;
+  this.maxSpeed = maxSpeed * 2;
   this.radius = radius;
  }
  
@@ -48,13 +48,23 @@ class Pod
  void render()
  {
    float disLine = (height * 0.75) - screenBorderY;
-   if(mouseY < disLine && location.y + (radius / 2) < disLine)
+   if((location.y < disLine && location.y + (radius / 2) < disLine) || location.y < height * 0.05)
    {
      stroke(255, 0, 0);
      noFill();
      line(location.x, disLine, location.x, 0);
      line(0, location.y, width, location.y);
-     rect(location.x, location.y, radius, radius);  
+     rect(location.x, location.y, radius, radius); 
+     noCursor();
+   }
+   else
+   {
+     stroke(255, 0, 0);
+     noFill();
+     line(location.x, disLine, location.x, 0);
+     line(0, disLine - radius, width, disLine - radius);
+     rect(location.x, disLine - radius, radius, radius); 
+    cursor(); 
    }
  }//end render
  

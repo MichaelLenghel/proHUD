@@ -43,16 +43,18 @@ class pieChart
      }
    }
    float thetaPrev = 0;
+   textAlign(CENTER);
+   float tSize = width / 70;
+   textSize(tSize);
    for(int i = 0; i <  sizeArray.length; i++)
     {
       // get the theata angle
       float theta = map(sizeArray[i], 0, total, 0, TWO_PI);
-      textAlign(CENTER);
       //col gives us a neat color within a certain range
       float col = map(sizeArray[i], 0, max, 255, 100 );
       float thetaNext = thetaPrev + theta;
       
-      float radius = cx * 0.9f;
+      float radius = cx * 0.5f;
       
       float x = cx + sin(thetaPrev + (theta / 2) + HALF_PI) * radius;
       float y = cy - cos(thetaPrev + (theta / 2) + HALF_PI) * radius;
@@ -85,7 +87,8 @@ class pieChart
       float size = height - disLine;
       arc(cx, cy, size / 1.5, size / 1.5, thetaPrev, thetaNext);
       thetaPrev = thetaNext;
-      text("Biggest star found: " + ConstantMax ,width / 2, height * 0.95);   
+      double bigNumber = ConstantMax / 9;
+      text("Biggest star found: " + ConstantMax + " trillion km" ,width / 2, height * 0.95);   
     }
     return(ConstantMax);
  }

@@ -42,12 +42,10 @@ class Background
     float tSize = width / 40;
     textSize(tSize * 2);
     textAlign(CENTER);
-    text("Story:", width / 2, height * 0.5);
     fill(0, 255, 255);
     textSize(tSize);
-    text("Story:", width / 2, height * 0.55);
-    text("You are a star", width / 2, height * 0.6);
-    text("explorer.", width / 2, height * 0.65);
+    text("You are a", width / 2, height * 0.6);
+    text("star explorer.", width / 2, height * 0.65);
     text( "You are tasked", width / 2, height * 0.7);
     text("with finding", width / 2, height * 0.75);
     text(" the biggest stars", width / 2, height * 0.8);

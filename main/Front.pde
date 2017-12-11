@@ -61,7 +61,16 @@ class Front implements UI
 
 void drawBars()
   {
-    float barBorderX = width * 0.3;
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  /*  float barBorderX = width * 0.3;
     float barBorderY = height * 0.85;
     float barWidth = width / 30;
     float barHeight = height / 5;
@@ -105,6 +114,8 @@ void drawBars()
 
     fill(255, 255, 255);
     text("Temp", barBorderX - 5, barBorderY- 10);
-    text("Fuel", (barBorderX * 2.2) - 5, barBorderY- 10);
+    text("Fuel", (barBorderX * 2.2) - 5, barBorderY- 10);*/
+    
+    
   }
 }
