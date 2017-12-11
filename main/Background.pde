@@ -51,6 +51,8 @@ class Background
     text( "You are tasked", width / 2, height * 0.7);
     text("with finding", width / 2, height * 0.75);
     text(" the biggest stars", width / 2, height * 0.8);
-    text("in the galaxy", width / 2, height * 0.85);
+    text("in the galaxy.", width / 2, height * 0.85);
+    stroke(255, 255, 255);
+    text("FOR ETERNITY.", width / 2, height * 0.95);
   }
 }//end class background
