@@ -9,9 +9,12 @@ ArrayList<Star> starss = new ArrayList<Star>();
 int numStars, numOfObjDisplayOnPauseScreen;
 boolean clicked = true;
 boolean warpDrive;
+boolean cycleChart = true;
 //napTime is used to delay spaceShuttle song from playing for 1 second and allow a transition to occur before space shuttle enters
 float screenBorderX = width / 30;
 float screenBorderY = height / 30;
+float chartCenterX;
+float chartCenterY;
 float[]sizeArray;
 Snow[] snow = new Snow[50];
 Front frontWarpCheck;
@@ -22,10 +25,12 @@ pieChart chart;
 
 void setup()
 {
-  fullScreen();
-  //size(600, 600);
+  //fullScreen();
+  size(600, 600);
   numStars = 500;
-  sizeArray = new float[10];
+  sizeArray = new float[5];
+  chartCenterX = width * 1/8;
+  chartCenterY = height - (height / 8);
   /*Sound stuff here*/
   minim = new Minim(this);
   flighterSound1 = minim.loadFile("flighterSound.mp3");
@@ -47,7 +52,7 @@ void setup()
   frontWarpCheck = new Front();
   screen = new Screen(screenBorderX, screenBorderY);
   pod = new Pod(width / 2, height / 2, 40.0f, 5.0f);
-  chart = new pieChart(width * 1/8, height - (height / 8), height / 6, 1);
+  chart = new pieChart(chartCenterX, chartCenterY, height / 6, 1);
   //gameObjects2.add(
 
     //We only want to display the two radars on the pause screen
@@ -102,7 +107,7 @@ void draw()
       s.render();
       s.warp(warpDrive);
       //Add to array the size of the star we touched
-      if(i > starss.size() - 11)
+      if(i > starss.size() - 6)
       {
         sizeArray[j] = size;
         j++;
@@ -125,12 +130,12 @@ void draw()
       changeRadarsRemoveOther();
       go2.update();
       go2.render();
-    } 
-        
+    }     
     chart.render();
-    chart.getInfo(sizeArray);
-   
-
+    if(cycleChart)
+    {
+      chart.getInfo(sizeArray);
+    }
   }//end if clicked
   
   else
@@ -212,7 +217,10 @@ void mousePressed()
   float borderX = width / 2 - buttonWidth / 2;
   float borderY = height / 3 - buttonHeight / 2;
   float disButton = (height * 0.85) - screenBorderY;
-  
+  float disLine = (height * 0.75) - screenBorderY;
+  float diameter = (height - disLine ) / 1.5;
+  float radius = diameter / 2;
+
   //Allows you to start the game!
   if(clicked == false)
   {
@@ -260,5 +268,19 @@ void mousePressed()
             //warp
           }   
       }//end check where pressed if
+      
+          //Check if pie chart is clicked
+    if (dist(chartCenterX, chartCenterY, mouseX, mouseY) < radius)
+    {
+      if(cycleChart == true)
+      {
+        cycleChart = false;
+      }
+      else
+      {
+        cycleChart = true;
+      }
+       
+    }
   }
 }//end mousePressed

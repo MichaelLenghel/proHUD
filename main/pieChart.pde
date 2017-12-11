@@ -2,24 +2,26 @@ class pieChart
 {
   float cx, cy, radius, frequency, speed, theta, total;
   float[] sizeArray;
+  float disLine;
  pieChart(float cx, float cy, float radius, float frequency)
  {
    this.cx = cx;
    this.cy = cy;
    this.radius = radius;
    this.frequency = frequency;
-   this.sizeArray = new float[10];
+   this.sizeArray = new float[5];
    //arrayCopy(sizeArr, sizeArray, 10);
    //Set defaults for array at start
    for(int i = 0; i < sizeArray.length; i++)
    {
      sizeArray[i] = i;
    }
+   disLine = (height * 0.75) - screenBorderY;
  }
  
  void getInfo(float[] sizeArr)
  {
-   arrayCopy(sizeArr, sizeArray, 10);
+   arrayCopy(sizeArr, sizeArray, 5);
  }
  
  void render()
@@ -49,7 +51,7 @@ class pieChart
       float col = map(sizeArray[i], 0, max, 255, 100 );
       float thetaNext = thetaPrev + theta;
       
-      float radius = cx * 0.6f;
+      float radius = cx * 0.9f;
       
       float x = cx + sin(thetaPrev + (theta / 2) + HALF_PI) * radius;
       float y = cy - cos(thetaPrev + (theta / 2) + HALF_PI) * radius;
@@ -79,7 +81,8 @@ class pieChart
       
       stroke(0, col, col);
       fill(0, col, col);
-      arc(cx, cy, cx, cy, thetaPrev, thetaNext);
+      float size = height - disLine;
+      arc(cx, cy, size / 1.5, size / 1.5, thetaPrev, thetaNext);
       thetaPrev = thetaNext;
     }
  }

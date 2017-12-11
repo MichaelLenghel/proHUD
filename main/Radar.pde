@@ -29,7 +29,7 @@ class Radar extends GameObject
   {
     stroke(0, 255, 0);
     noFill();
-    int trailLength = 20;
+    int trailLength = 10;
     float greenIntensity = 255.0f / (float)trailLength;
     float blueIntensity = 255.0f / (float)trailLength;
     float x, y;
@@ -39,10 +39,12 @@ class Radar extends GameObject
       {
         if(!col)
         {
+          trailLength = 10;
           stroke (0, greenIntensity * i, 0);
         }
         else
         {
+          trailLength = 20;
           stroke (0, 0, blueIntensity * i);
         }
         
