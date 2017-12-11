@@ -4,16 +4,7 @@ class Budget
     String currency;
     int year;
     float amount;
-    
-    Budget(String line)
-    {
-      String[] fields = line.split(",");
-      country = fields[0];
-      currency = fields[1];
-      year = Integer.parseInt(fields[3]);
-      amount = Float.parseFloat(fields[4]);
-    }
-    
+    //Reads values from list and inputs them into a variable
     Budget(TableRow row)
     {
       country = row.getString(0);

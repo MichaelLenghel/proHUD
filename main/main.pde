@@ -308,6 +308,5 @@ void mousePressed()
     TableRow row = t.getRow(i);
     Budget budget = new Budget(row);
     data.add(budget);
-    println("list");
   }
 }
