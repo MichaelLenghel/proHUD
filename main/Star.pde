@@ -51,11 +51,6 @@ class Star
    size = map(z, 0, width, 10, 0);
 
    locationStar = new PVector(x, y);
-   //20 is the half of the pod. Hard coded :(
-   //if(locationStar.dist(locationPod) < 20)
-   //{
-   //  println("We just touched a star fo size: " + size);
-   //}
    //Map x and y onto the screen
    ellipse(cx, cy, size, size);
    stroke(255);
