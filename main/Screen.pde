@@ -37,7 +37,7 @@ class Screen implements UI
         rect(screenBorderX,  screenBorderY, width - (screenBorderX * 2), dis , 75);
    }//end if
 
-    stroke(0, 255, 255, 150);
+    stroke(255, 255, 255, 150);
     
     float tSize = width / 60;
     textSize(tSize);
