@@ -10,7 +10,9 @@ class Front implements UI
   void render()
   {
     noStroke();
+    //Needs to be corner mode
     rectMode(CORNER);
+    //Finds distance to bottom of screen
     disLine = (height * 0.75) - screenBorderY;
     float disButton = (height * 0.85) - screenBorderY;
     //Draw the panel at the bottom
@@ -38,6 +40,7 @@ class Front implements UI
     //Button to go into warp drive
     rectMode(CENTER);
     rect(width / 2, disButton,buttonWidth, buttonHeight, 75); 
+    //Scale text size
     float tSize = width / 40;
     textSize(tSize);
     textAlign(CENTER);
