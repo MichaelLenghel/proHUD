@@ -8,7 +8,7 @@ ArrayList<GameObject> gameObjects2 = new ArrayList<GameObject>();
 ArrayList<Star> starss = new ArrayList<Star>();
 ArrayList<Budget > data = new ArrayList<Budget>();
 int numStars, numOfObjDisplayOnPauseScreen;
-boolean clicked = true;
+boolean clicked = false;
 boolean warpDrive;
 boolean cycleChart = true;
 //napTime is used to delay spaceShuttle song from playing for 1 second and allow a transition to occur before space shuttle enters
@@ -146,6 +146,7 @@ void draw()
     {
       chart.getInfo(sizeArray);
     }
+    text("Max: " + maxBudget + " Min: " + minBudget, width / 2, height * 0.04);
   }//end if clicked
   
   else
@@ -299,6 +300,7 @@ void mousePressed()
     }//end if
   }//end else
 }//end mousePressed
+float maxBudget, minBudget;
 
  void loadData()
 {
@@ -310,20 +312,18 @@ void mousePressed()
     data.add(budget);
     
     /**Calculate the maxiumum and minimum budgets*/
-    float max = 0;
-    float min = 0;
+    maxBudget = 0;
+    minBudget = 0;
     for (Budget b:data)
     {
-      if (budget.amount < min)
+      if (budget.amount < minBudget)
       {
-        min = budget.amount;
+        minBudget = budget.amount;
       }
-      if (budget.amount > max)
+      if (budget.amount > maxBudget)
       {
-        max = budget.amount;
+        maxBudget = budget.amount;
       }    
     }//end nested for
-    println("Maximum of budget is: " + max);
-    println("Minimum of budget is: " + min);
   }//end for
 }
