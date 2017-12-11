@@ -308,5 +308,22 @@ void mousePressed()
     TableRow row = t.getRow(i);
     Budget budget = new Budget(row);
     data.add(budget);
-  }
+    
+    /**Calculate the maxiumum and minimum budgets*/
+    float max = 0;
+    float min = 0;
+    for (Budget b:data)
+    {
+      if (budget.amount < min)
+      {
+        min = budget.amount;
+      }
+      if (budget.amount > max)
+      {
+        max = budget.amount;
+      }    
+    }//end nested for
+    println("Maximum of budget is: " + max);
+    println("Minimum of budget is: " + min);
+  }//end for
 }
