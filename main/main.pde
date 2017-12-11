@@ -12,19 +12,20 @@ boolean warpDrive;
 //napTime is used to delay spaceShuttle song from playing for 1 second and allow a transition to occur before space shuttle enters
 float screenBorderX = width / 30;
 float screenBorderY = height / 30;
-
+float[]sizeArray;
 Snow[] snow = new Snow[50];
 Front frontWarpCheck;
 Screen screen;
 Background background1;
-
+Pod pod;
+pieChart chart;
 
 void setup()
 {
-  //fullScreen();
-  size(600, 600);
-  numStars = 350;
-  
+  fullScreen();
+  //size(600, 600);
+  numStars = 500;
+  sizeArray = new float[10];
   /*Sound stuff here*/
   minim = new Minim(this);
   flighterSound1 = minim.loadFile("flighterSound.mp3");
@@ -41,13 +42,12 @@ void setup()
   gameObjectsStart.add(
     new Radar(width - width / 10, height / 10, 100, 1, false));
   gameObjects2.add(
-    new Pod(width / 2, height / 2, 40.0f, 5.0f));
-  gameObjects2.add(
     new Radar(width - width * 1/8, height - (height / 8), height / 6, 1, false));
-  gameObjects2.add(
-   new Radar(width * 1/8, height - (height / 8), height / 6, 1, false));
+   //new Radar(width * 1/8, height - (height / 8), height / 6, 1, false));
   frontWarpCheck = new Front();
   screen = new Screen(screenBorderX, screenBorderY);
+  pod = new Pod(width / 2, height / 2, 40.0f, 5.0f);
+  chart = new pieChart(width * 1/8, height - (height / 8), height / 6, 1);
   //gameObjects2.add(
 
     //We only want to display the two radars on the pause screen
@@ -68,7 +68,7 @@ void setup()
 
 void draw()
 {
-   
+  float podX, podY;
   if (clicked)
   {
     background(255,215,0);
@@ -85,19 +85,36 @@ void draw()
     
     //Draw stars centered around width, we do this so when we zoom in to the center and we are not going towards the corners
     screen.render();
-    pushMatrix();
-    translate(width / 2, height / 2);
+    screen.col(warpDrive);
+     pushMatrix();
+     translate(width / 2, height / 2);
+     //0 for x
+     podX = pod.overlaps(0);
+     //1 for y
+     podY = pod.overlaps(1);
+    int j = 0;
     for(int i = starss.size() - 1 ; i >= 0  ; i --)
     {
       Star s = starss.get(i);
+      float size = s.checkIfTouched(podX, podY);
+      
       s.update();
       s.render();
-      s.warp(warpDrive); 
+      s.warp(warpDrive);
+      //Add to array the size of the star we touched
+      if(i > starss.size() - 11)
+      {
+        sizeArray[j] = size;
+        j++;
+      }
+      
     }
     popMatrix();
     //Displays front
     frontWarpCheck.render();
     frontWarpCheck.warpCheck(warpDrive);
+    pod.update();
+    pod.render();
     
     //Display Radars
     for(int i = gameObjects2.size() - 1 ; i >= 0  ; i --)
@@ -105,11 +122,15 @@ void draw()
       GameObject go2 = gameObjects2.get(i);    
     
       //We will remove the radars and change them to be red and faster during warp drive
-     // go2.overlaps();
       changeRadarsRemoveOther();
       go2.update();
       go2.render();
     } 
+        
+    chart.render();
+    chart.getInfo(sizeArray);
+   
+
   }//end if clicked
   
   else
@@ -149,22 +170,17 @@ void changeRadarsRemoveOther()
       //adds new radar, but will make it red and much faster
       gameObjects2.add(
         new Radar(width - width * 1/8, height - (height / 8), height / 6, 3, true));//True means we are in warp and do what we would expect
-      gameObjects2.add(
-       new Radar(width * 1/8, height - (height / 8), height / 6, 3, true));
     }
     
     else
     {
-      //clears current radar
-      gameObjects2.clear();
+     //clears current radar
+     gameObjects2.clear();
      gameObjects2.add(
         new Radar(width - width * 1/8, height - (height / 8), height / 6, 1, false));
-      gameObjects2.add(
-        new Radar(width * 1/8, height - (height / 8), height / 6, 1, false));
-      gameObjects2.add(
-        new Pod(width / 2, height / 2, 40.0f, 5.0f));
-    }
     doOnce = false;
+    }
+
   }
 
 }

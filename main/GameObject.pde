@@ -19,12 +19,6 @@ abstract class GameObject
    this.numResources = numResources; 
   }
   
-  //void overlaps()
-  //{
-  // Pod pods = new Pod();
-  // pods.overlaps(); 
-  //}
-  
   abstract void render();
   abstract void update();
 }//end

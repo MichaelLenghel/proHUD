@@ -12,9 +12,11 @@ class Front implements UI
     noStroke();
     rectMode(CORNER);
     //Draw the panel at the bottom
-     fill(133, 133, 133);
+    fill(0, 0, 0);
      //Below window
-    rect(0,  height * 3 / 4, width, height / 2);
+    rect(0, height * 3 / 4, width, height / 2);
+    fill(133,133,133);
+    rect(0,  height * 3 / 4, width, height / 2, 200, 200, 0, 0);
     float disLine = (height * 0.75) - screenBorderY;
     float disButton = (height * 0.85) - screenBorderY;
     fill(0);
@@ -26,7 +28,8 @@ class Front implements UI
     float buttonWidth = width / 4;
     float buttonHeight = height / 12;
     
-    fill(0, 255, 0, 60);
+    
+    fill(211,211,211);
     //Button to go into warp drive
     rectMode(CENTER);
     rect(width / 2, disButton,buttonWidth, buttonHeight, 75); 

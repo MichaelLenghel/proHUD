@@ -1,30 +1,33 @@
-class Pod extends GameObject
+class Pod
 {
  PVector location;
  PVector velocity;
  PVector acceleration;
  float maxSpeed, radius;
- Resources resources;
-
-  //Pod()
-  //{
-  //  super(1, 2, 3, 4);
-  //}
   
-  void overlaps()
+  //Returns the exact location of this pod so that we can check if it goes over a star
+  float overlaps(float check)
   {
-   println("Overlapped"); 
+    //If 0 then it is x
+    if(check == 0)
+    {
+      check = location.x;
+    }
+    
+    else
+    {
+       check = location.y;
+    }
+    return(check);
   }
  
  Pod(float x, float y, float radius, float maxSpeed)
  {
-  super(x, y, radius, maxSpeed);
   location = new PVector(x, y);
   velocity = new PVector(0, 0);
   acceleration = new PVector(0, 0);
   this.maxSpeed = maxSpeed;
   this.radius = radius;
-  resources = new Resources(0);
  }
  
  void update()
@@ -53,9 +56,6 @@ class Pod extends GameObject
      line(0, location.y, width, location.y);
      rect(location.x, location.y, radius, radius);  
    }
-   //Call resources
-   resources.pos(location);
-   resources.render();
  }//end render
  
  void edges()

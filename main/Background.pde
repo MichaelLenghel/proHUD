@@ -10,8 +10,8 @@ class Background
     {
       line(width / 2, height / 2, i * 6, height);
     }//end for
-    
     moveBackground();
+    instructions();
   }//end initialiseBackground
   
   void moveBackground()
@@ -37,4 +37,12 @@ class Background
     roadMove += speed;
   }//end moveBackground
   
+  void instructions()
+  {
+    float tSize = width / 40;
+    textSize(tSize);
+    textAlign(CENTER);
+    fill(0, 255, 255);
+    text("Story:", width / 2, height * 0.8);
+  }
 }//end class background
