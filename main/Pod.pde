@@ -48,23 +48,33 @@ class Pod
  void render()
  {
    float disLine = (height * 0.75) - screenBorderY;
-   if((location.y < disLine && location.y + (radius / 2) < disLine) || location.y < height * 0.05)
+   float top = height * 0.05;
+   if(location.y < disLine && location.y + (radius / 2) < disLine && location.y > top)
    {
      stroke(255, 0, 0);
      noFill();
-     line(location.x, disLine, location.x, 0);
+     line(location.x, disLine, location.x, top);
      line(0, location.y, width, location.y);
      rect(location.x, location.y, radius, radius); 
      noCursor();
+   }
+   else if(location.y > top)
+   {
+     stroke(255, 0, 0);
+     noFill();
+     line(location.x, disLine, location.x, top);
+     line(0, disLine - radius, width, disLine - radius);
+     rect(location.x, disLine - radius, radius, radius); 
+    cursor(); 
    }
    else
    {
      stroke(255, 0, 0);
      noFill();
-     line(location.x, disLine, location.x, 0);
-     line(0, disLine - radius, width, disLine - radius);
-     rect(location.x, disLine - radius, radius, radius); 
-    cursor(); 
+     line(location.x, disLine, location.x, top);
+     line(0, top + radius, width, top + radius);
+     rect(location.x, top + radius, radius, radius); 
+     cursor(); 
    }
  }//end render
  
