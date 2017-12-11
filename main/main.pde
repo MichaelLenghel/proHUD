@@ -27,6 +27,7 @@ void setup()
 {
   //fullScreen();
   size(600, 600);
+  frameRate (60);
   numStars = 500;
   sizeArray = new float[5];
   chartCenterX = width * 1/8;
@@ -53,9 +54,8 @@ void setup()
   screen = new Screen(screenBorderX, screenBorderY);
   pod = new Pod(width / 2, height / 2, 40.0f, 5.0f);
   chart = new pieChart(chartCenterX, chartCenterY, height / 6, 1);
-  //gameObjects2.add(
 
-    //We only want to display the two radars on the pause screen
+   //We only want to display the two radars on the pause screen
    numOfObjDisplayOnPauseScreen = 2;
    int i;
   background1 = new Background();
@@ -199,7 +199,6 @@ void displayButton()
   stroke (0, 255, 255, 150);
   fill(0, 255, 255, 200);
   //Center rectangle to make it easier 
-  //rectMode(CENTER);
   rect(borderX , borderY, buttonWidth, buttonHeight);
   fill(255, 110, 25);
   textAlign(CENTER);
@@ -279,8 +278,7 @@ void mousePressed()
       else
       {
         cycleChart = true;
-      }
-       
-    }
-  }
+      } 
+    }//end if
+  }//end else
 }//end mousePressed

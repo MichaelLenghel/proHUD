@@ -63,6 +63,34 @@ class Screen implements UI
         rect(barBorderX, barLineY, width / 30, (height / 5) / 2);
         rect(barBorderX * 2.2, barLineY, width / 30, (height / 5 / 2));
       }
+      if(warpDrive)
+      {
+        
+        int counter = 0;
+        if(frameCount % 60  == 0)
+        {
+           counter++;
+        }
+        
+        if(counter == 0)
+        {
+          background(0, 77, 194);
+          println("in 1");
+        }
+        
+        else if(counter == 1)
+        {
+           background(0, 11, 194);
+            println("in 2");
+        }
+        
+        else if(counter > 1)
+        {
+          background(6, 0, 194);
+           println("in 3e");
+        }
+       
+      }
     }//end for loop
 
     fill(255, 255, 255);
