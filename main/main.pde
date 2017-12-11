@@ -303,15 +303,6 @@ void mousePressed()
  void loadData()
 {
   data.clear();
-  
-  String[] lines = loadStrings("gdp.csv");
-  for(String line: lines)
-  {
-    Budget gdp = new Budget(line);
-    data.add(gdp);
-  }
-  data.clear();
-  // A better way to do the above!
   Table t = loadTable("gdp.csv");
   for(int i = 0 ; i < t.getRowCount(); i ++)
   {
