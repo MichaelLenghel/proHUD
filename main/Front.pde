@@ -20,6 +20,7 @@ class Front implements UI
      //Below window
     rect(0, height * 3 / 4, width, height / 2);
     fill(133,133,133);
+    //Triangles on the top side of the screen
     triangle(0, height * 0.1, 0, 0, 0.1 * width, 0);
     triangle(width, height * 0.1, width, 0, 0.9 * width, 0);
     rect(0, 0, width, height * 0.05);
@@ -42,6 +43,7 @@ class Front implements UI
     rect(width / 2, disButton,buttonWidth, buttonHeight, 75); 
     //Scale text size
     float tSize = width / 40;
+    
     textSize(tSize);
     textAlign(CENTER);
     fill(0, 255, 255);

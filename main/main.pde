@@ -6,6 +6,7 @@ AudioPlayer flighterSound1, buttonClick, warpSound, windDown, startScreen;
 ArrayList<GameObject> gameObjectsStart = new ArrayList<GameObject>();
 ArrayList<GameObject> gameObjects2 = new ArrayList<GameObject>();
 ArrayList<Star> starss = new ArrayList<Star>();
+ArrayList<Budget > data = new ArrayList<Budget>();
 int numStars, numOfObjDisplayOnPauseScreen;
 boolean clicked = true;
 boolean warpDrive;
@@ -64,9 +65,9 @@ void setup()
   pod = new Pod(width / 2, height / 2, 40.0f, 5.0f);
   chart = new pieChart(chartCenterX, chartCenterY, height / 6, 1);
 
-   //We only want to display the two radars on the pause screen
-   numOfObjDisplayOnPauseScreen = 2;
-   int i;
+  //We only want to display the two radars on the pause screen
+  numOfObjDisplayOnPauseScreen = 2;
+  int i;
   background1 = new Background();
   for(i = 0; i < snow.length; i++)
   {
@@ -202,11 +203,9 @@ void changeRadarsRemoveOther()
      gameObjects2.add(
         new Meters(width * 1/6, height - (height / 8), height / 6, 1, "Temp", false, 2));
     doOnce = false;
-    }
-
-  }
-
-}
+    }//end else
+  }//end if
+}//end changeRadarsRemoveOther
   
 void displayButton()
 {
