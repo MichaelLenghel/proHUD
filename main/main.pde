@@ -7,7 +7,7 @@ ArrayList<GameObject> gameObjectsStart = new ArrayList<GameObject>();
 ArrayList<GameObject> gameObjects2 = new ArrayList<GameObject>();
 ArrayList<Star> starss = new ArrayList<Star>();
 int numStars, numOfObjDisplayOnPauseScreen;
-boolean clicked = false;
+boolean clicked = true;
 boolean warpDrive;
 boolean cycleChart = true;
 //napTime is used to delay spaceShuttle song from playing for 1 second and allow a transition to occur before space shuttle enters
@@ -51,6 +51,11 @@ void setup()
     new Radar(width - width / 10, height / 10, 100, 1, false));
   gameObjects2.add(
     new Radar(width - width * 1/8, height - (height / 8), height / 6, 1, false));
+  //Meter
+  gameObjects2.add(
+    new Meters(width - width * 1/6, height - (height / 8), height / 6, 1, "Fuel", false));
+  gameObjects2.add(
+    new Meters(width * 1/6, height - (height / 8), height / 6, 1, "Temp", false));
    //new Radar(width * 1/8, height - (height / 8), height / 6, 1, false));
   frontWarpCheck = new Front();
   screen = new Screen(screenBorderX, screenBorderY);
@@ -178,6 +183,10 @@ void changeRadarsRemoveOther()
       //adds new radar, but will make it red and much faster
       gameObjects2.add(
         new Radar(width - width * 1/8, height - (height / 8), height / 6, 3, true));//True means we are in warp and do what we would expect
+      gameObjects2.add(
+        new Meters(width - width * 1/6, height - (height / 8), height / 6, 1, "Fuel", false));
+      gameObjects2.add(
+        new Meters(width - width * 1/6, height - (height / 8), height / 6, 1, "Temp", false));
     }
     
     else
@@ -186,6 +195,10 @@ void changeRadarsRemoveOther()
      gameObjects2.clear();
      gameObjects2.add(
         new Radar(width - width * 1/8, height - (height / 8), height / 6, 1, false));
+     gameObjects2.add(
+        new Meters(width - width * 1/6, height - (height / 8), height / 6, 1, "Fuel", true));
+     gameObjects2.add(
+        new Meters(width - width * 1/6, height - (height / 8), height / 6, 1, "Temp", true));
     doOnce = false;
     }
 
