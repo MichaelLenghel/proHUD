@@ -77,7 +77,7 @@ class Pod
      cursor(); 
    }
  }//end render
- 
+ //Doesn't let the pod go over the edges
  void edges()
  {
    if (location.x > width)

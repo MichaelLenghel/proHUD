@@ -54,7 +54,6 @@ class Star
    ellipse(cx, cy, size, size);
    stroke(255);
    
-   
    if (warpPressed)
    {
      speed = 30;
@@ -74,7 +73,7 @@ class Star
    locationPod = new PVector(podX,podY);
    return(size);
  }
- 
+ //Gets data if warped
  void warp(boolean warpPressed)
  {
    this.warpPressed = warpPressed;

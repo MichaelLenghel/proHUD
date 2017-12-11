@@ -121,8 +121,7 @@ void draw()
       {
         sizeArray[j] = size;
         j++;
-      }
-      
+      } 
     }
     popMatrix();
     //Displays front
@@ -179,6 +178,7 @@ void changeRadarsRemoveOther()
 {
   if(doOnce)
   {
+    /*Deletes objects on screen so that we can put new ones over them for warping*/
     if(warpDrive)
     {
       //clears current radar
@@ -285,7 +285,7 @@ void mousePressed()
           }   
       }//end check where pressed if
       
-          //Check if pie chart is clicked
+    //Check if pie chart is clicked
     if (dist(chartCenterX, chartCenterY, mouseX, mouseY) < radius)
     {
       if(cycleChart == true)
