@@ -30,6 +30,13 @@ class Screen implements UI
     //Window
     fill(0);
     rect(screenBorderX,  screenBorderY, width - (screenBorderX * 2), dis , 75);
+   //Make background blue when we go into warpDrive
+   if(warpDrive)
+   {
+        fill(0, 0, 194);
+        rect(screenBorderX,  screenBorderY, width - (screenBorderX * 2), dis , 75);
+   }//end if
+
     stroke(0, 255, 255, 150);
     
     float tSize = width / 60;
@@ -62,34 +69,6 @@ class Screen implements UI
         fill(255, 255, 51);     
         rect(barBorderX, barLineY, width / 30, (height / 5) / 2);
         rect(barBorderX * 2.2, barLineY, width / 30, (height / 5 / 2));
-      }
-      if(warpDrive)
-      {
-        
-        int counter = 0;
-        if(frameCount % 60  == 0)
-        {
-           counter++;
-        }
-        
-        if(counter == 0)
-        {
-          background(0, 77, 194);
-          println("in 1");
-        }
-        
-        else if(counter == 1)
-        {
-           background(0, 11, 194);
-            println("in 2");
-        }
-        
-        else if(counter > 1)
-        {
-          background(6, 0, 194);
-           println("in 3e");
-        }
-       
       }
     }//end for loop
 
