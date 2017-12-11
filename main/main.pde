@@ -16,6 +16,7 @@ float screenBorderY = height / 30;
 float chartCenterX;
 float chartCenterY;
 float max;
+float disLine;
 float[]sizeArray;
 Snow[] snow = new Snow[50];
 Front frontWarpCheck;
@@ -30,6 +31,7 @@ void setup()
   //size(600, 600);
   frameRate (60);
   numStars = 500;
+  disLine = (height * 0.75) - screenBorderY;
   max = 0;
   sizeArray = new float[5];
   chartCenterX = width * 1/8;
@@ -53,9 +55,9 @@ void setup()
     new Radar(width - width * 1/8, height - (height / 8), height / 6, 1, false));
   //Meter
   gameObjects2.add(
-    new Meters(width - width * 1/6, height - (height / 8), height / 6, 1, "Fuel", false));
+    new Meters(width - width * 1/6, height - (height / 8), height / 6, 1, "Fuel", false, 1));
   gameObjects2.add(
-    new Meters(width * 1/6, height - (height / 8), height / 6, 1, "Temp", false));
+    new Meters(width * 1/6, height - (height / 8), height / 6, 1, "Temp", false, 2));
    //new Radar(width * 1/8, height - (height / 8), height / 6, 1, false));
   frontWarpCheck = new Front();
   screen = new Screen(screenBorderX, screenBorderY);
@@ -184,9 +186,9 @@ void changeRadarsRemoveOther()
       gameObjects2.add(
         new Radar(width - width * 1/8, height - (height / 8), height / 6, 3, true));//True means we are in warp and do what we would expect
       gameObjects2.add(
-        new Meters(width - width * 1/6, height - (height / 8), height / 6, 1, "Fuel", false));
+        new Meters(width - width * 1/6, height - (height / 8), height / 6, 1, "Fuel", true, 1));
       gameObjects2.add(
-        new Meters(width - width * 1/6, height - (height / 8), height / 6, 1, "Temp", false));
+        new Meters(width * 1/6, height - (height / 8), height / 6, 1, "Temp", true, 2));
     }
     
     else
@@ -196,9 +198,9 @@ void changeRadarsRemoveOther()
      gameObjects2.add(
         new Radar(width - width * 1/8, height - (height / 8), height / 6, 1, false));
      gameObjects2.add(
-        new Meters(width - width * 1/6, height - (height / 8), height / 6, 1, "Fuel", true));
+        new Meters(width - width * 1/6, height - (height / 8), height / 6, 1, "Fuel", false, 1));
      gameObjects2.add(
-        new Meters(width - width * 1/6, height - (height / 8), height / 6, 1, "Temp", true));
+        new Meters(width * 1/6, height - (height / 8), height / 6, 1, "Temp", false, 2));
     doOnce = false;
     }
 
@@ -232,7 +234,7 @@ void mousePressed()
   float borderX = width / 2 - buttonWidth / 2;
   float borderY = height / 3 - buttonHeight / 2;
   float disButton = (height * 0.85) - screenBorderY;
-  float disLine = (height * 0.75) - screenBorderY;
+  disLine = (height * 0.75) - screenBorderY;
   float diameter = (height - disLine ) / 1.5;
   float radius = diameter / 2;
 

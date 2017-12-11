@@ -1,63 +1,67 @@
 class Meters extends GameObject
 {
-  float barBorderX, barBorderY, frequency;
+  float barBorderX, barBorderY, frequency, disLine;
   String name;
   boolean warpDrive;
-  Meters(float cx, float cy, float radius, float frequency, String name, boolean warpDrive)
+  Meters(float cx, float cy, float radius, float frequency, String name, boolean warpDrive, int leftRight)
   {
     super(cx, cy, radius, frequency);
     //Will give us the corner
-    barBorderX = cx;
-    barBorderY = cy;
+    disLine = (height * 0.75) - screenBorderY;
     this.frequency = frequency;
     this.name = name;
     this.warpDrive = warpDrive;
+    //1 for left, 2 for right
+    if(leftRight == 1)
+    {
+      barBorderX = cx - (cx * 0.2);
+    }
+    else if(leftRight == 2)
+    {
+      barBorderX = cx * 2;
+    }
   }
+  
+    float barWidth;
+    float barHeight;
+    float barLineX;
+    float barLineY;
   
   void update()
   {
-    float barWidth = width / 30;
-    float barHeight = height / 5;
-    float barLineX = barBorderX + barWidth;
-    float barLineY = 0;
+    barWidth = width / 30;
+    barHeight = height / 5;
+    barLineX = barBorderX + barWidth;
+    barLineY = 0;
     
-    fill(255, 255, 255);
-    stroke(255, 255, 255);
-    //Temp meter
-    rect(barBorderX, barBorderY, barWidth, barHeight);
 
-    //for(int i = 0; i < 7; i ++)
-    //{
-    //  barLineY = map(i, 0, 6, barBorderY, barBorderY + barHeight);
-    //  //Draw lines for temp meter
-    //  line(barBorderX, barLineY, barLineX, barLineY);
-    //  //Draw lines for fuel meter
-    //  line(barBorderX * 2.2, barLineY, (barBorderX * 2.2) + barWidth, barLineY);
-    //  //rect(barBorderX, barLineY, width / 30, height / 5);
-    //  if(warpDrive && i < 4)
-    //  {
-
-    //        fill(255, 0, 51);     
-    //        rect(barBorderX, barLineY, width / 30, barHeight / 2);
-    //        rect(barBorderX * 2.2, barLineY, barWidth, barHeight/ 2);
-    //  }//end if warpDrivce
+    stroke(0, 255, 255);
+    //Tmeter
+    if(warpDrive)
+    {
+      fill(255, 0, 51);
       
-    //  else if(!warpDrive && i < 4)
-    //  {
-    //    fill(0, 255, 51);     
-    //    rect(barBorderX, barLineY, width / 30, barHeight / 2);
-    //    rect(barBorderX * 2.2, barLineY, barWidth, barHeight / 2);
-    //  }
- //}//end for loop 
+    }
+    else
+    {
+      fill(0, 255, 51);
+    }
+    rect(barBorderX, disLine + barHeight / 1.5, barWidth, barHeight);
+    for(int i = 0; i < 7; i ++)
+    {
+      barLineY = map(i, 0, 6, disLine, disLine + barHeight);
+      //Draw lines for meter
+      line(barBorderX - (barWidth / 2), barLineY, barLineX - (barWidth / 2), barLineY);
+      fill(0, 255, 51);
+    }//end for loop 
   }
   
   void render()
   {
-    float tSize = width / 60;
+    float tSize = width / 100;
     textSize(tSize);
-    textAlign(CORNER);
-    fill(255, 255, 255);
-    //text(name, barBorderX - 5, barBorderY- 10);
-    rect(cx, cy, 10, 10);
+    noFill();
+    textAlign(CENTER);
+    text(name, barBorderX, disLine + barHeight / 7);
   }
 }
