@@ -46,6 +46,5 @@ class Front implements UI
     {
      text("Stop warp Drive", width / 2, disButton); 
     }
-    
   }
 }

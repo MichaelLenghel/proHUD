@@ -66,7 +66,7 @@ class Screen implements UI
       
       else if(!warpDrive && i < 4)
       {
-        fill(255, 255, 51);     
+        fill(0, 255, 51);     
         rect(barBorderX, barLineY, width / 30, (height / 5) / 2);
         rect(barBorderX * 2.2, barLineY, width / 30, (height / 5 / 2));
       }

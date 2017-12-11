@@ -3,6 +3,7 @@ class pieChart
   float cx, cy, radius, frequency, speed, theta, total;
   float[] sizeArray;
   float disLine;
+  
  pieChart(float cx, float cy, float radius, float frequency)
  {
    this.cx = cx;
@@ -11,11 +12,6 @@ class pieChart
    this.frequency = frequency;
    this.sizeArray = new float[5];
    //arrayCopy(sizeArr, sizeArray, 10);
-   //Set defaults for array at start
-   for(int i = 0; i < sizeArray.length; i++)
-   {
-     sizeArray[i] = i;
-   }
    disLine = (height * 0.75) - screenBorderY;
  }
  
@@ -24,7 +20,7 @@ class pieChart
    arrayCopy(sizeArr, sizeArray, 5);
  }
  
- void render()
+ float render(float ConstantMax)
  {
    //Find total of the size array
    total = 0;
@@ -39,6 +35,11 @@ class pieChart
      if (sizeArray[i] > max)
      {
         max = sizeArray[i];
+        if(max > ConstantMax)
+        {
+          ConstantMax = max;
+        }
+        
      }
    }
    float thetaPrev = 0;
@@ -55,7 +56,6 @@ class pieChart
       
       float x = cx + sin(thetaPrev + (theta / 2) + HALF_PI) * radius;
       float y = cy - cos(thetaPrev + (theta / 2) + HALF_PI) * radius;
-      
       
       fill(255);
       if(sizeArray[i] > 1 && sizeArray[i] < 3)
@@ -79,11 +79,14 @@ class pieChart
       }
       
       
+      
       stroke(0, col, col);
       fill(0, col, col);
       float size = height - disLine;
       arc(cx, cy, size / 1.5, size / 1.5, thetaPrev, thetaNext);
       thetaPrev = thetaNext;
+      text("Biggest star found: " + ConstantMax ,width / 2, height * 0.95);   
     }
+    return(ConstantMax);
  }
 }

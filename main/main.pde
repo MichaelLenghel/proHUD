@@ -7,7 +7,7 @@ ArrayList<GameObject> gameObjectsStart = new ArrayList<GameObject>();
 ArrayList<GameObject> gameObjects2 = new ArrayList<GameObject>();
 ArrayList<Star> starss = new ArrayList<Star>();
 int numStars, numOfObjDisplayOnPauseScreen;
-boolean clicked = true;
+boolean clicked = false;
 boolean warpDrive;
 boolean cycleChart = true;
 //napTime is used to delay spaceShuttle song from playing for 1 second and allow a transition to occur before space shuttle enters
@@ -15,6 +15,7 @@ float screenBorderX = width / 30;
 float screenBorderY = height / 30;
 float chartCenterX;
 float chartCenterY;
+float max;
 float[]sizeArray;
 Snow[] snow = new Snow[50];
 Front frontWarpCheck;
@@ -29,6 +30,7 @@ void setup()
   size(600, 600);
   frameRate (60);
   numStars = 500;
+  max = 0;
   sizeArray = new float[5];
   chartCenterX = width * 1/8;
   chartCenterY = height - (height / 8);
@@ -130,8 +132,9 @@ void draw()
       changeRadarsRemoveOther();
       go2.update();
       go2.render();
-    }     
-    chart.render();
+    }
+    
+    max = chart.render(max);
     if(cycleChart)
     {
       chart.getInfo(sizeArray);
